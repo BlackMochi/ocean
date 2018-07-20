@@ -1,0 +1,23 @@
+doctype html
+html
+    head
+        title Realtime Chat using Node.js and Socket.IO
+        meta(name='viewport', content="initial-scale=1")
+        link(rel='stylesheet', href='css/main.css')
+        script(src="https://code.jquery.com/jquery-1.10.2.min.js")
+        script(src="/socket.io/socket.io.js")
+    body
+        div.box.box--container
+            div.box.box--chat
+                ul#chat-history
+                form#chat-form(action="")
+                    input.box(type="text", id="chat-message", autocomplete="off", placeholder="Enter message here...")
+        script.
+            var socket = io();
+            socket.on('message',(data) => {
+                log(meaasge)
+            })
+            socket.emit('chat', 'Hello');
+            function sendMessage() {
+                socket.emit('message','ok')
+            }

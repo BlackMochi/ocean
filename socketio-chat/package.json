@@ -1,0 +1,12 @@
+{
+  "name": "realtime-chat",
+  "version": "0.1.0",
+  "devDependencies": {
+    "express": "^4.12.3",
+    "jade": "^1.9.2",
+    "socket.io": "^2.0.4"
+  },
+  "dependencies": {
+    "pug": "^2.0.3"
+  }
+}

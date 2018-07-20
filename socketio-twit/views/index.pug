@@ -1,0 +1,30 @@
+doctype html
+html
+    head
+        title Realtime Chat using Node.js and Socket.IO
+        script(src="https://code.jquery.com/jquery-1.10.2.min.js")
+        script(src="/socket.io/socket.io.js")
+    body
+        div(id='item')
+           
+        script.
+            //const socket = require('socket.io-client')('http://localhost:8081')
+            var socket = io();
+            socket.on('new message',(data) => {
+                console.log(data)
+            })
+            socket.on('msg2',(data)=>{
+                var elem = document.getElementById('item').innerHTML
+                var cen
+                if(data.score < 0) {
+                   cen = 'negative'}
+                else if (data.score == 0) {
+                    cen = 'natural'}
+                else {
+                    cen = 'positive'}
+                document.getElementById('item').innerHTML = '<div><div style="float:left; margin-right:10px"><img width=70 height=70" src='+data.user.profile_image_url+'></div><div>' + data.user.name + ' @' + data.user.screen_name+ '<br>' + data.created_at + '<br>' + data.text + '<br> centiment = ' + cen + '</div></div><br><br>' + elem
+                console.log(data)
+            })
+            
+            socket.emit('new message', 'Hello from client');
+            
